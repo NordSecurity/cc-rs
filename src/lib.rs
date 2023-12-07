@@ -1840,6 +1840,16 @@ impl Build {
                                 .into(),
                             );
                         }
+                    } else if target.contains("aarch64-apple-tvos-sim") {
+                        if let Some(arch) =
+                            map_darwin_target_from_rust_to_compiler_architecture(target)
+                        {
+                            let deployment_target =
+                                self.apple_deployment_version(AppleOs::TvOs, target, None);
+                            cmd.args.push(
+                                format!("--target={}-apple-tvos{}-simulator", arch, deployment_target).into(),
+                            );
+                        }
                     } else if target.contains("aarch64-apple-tvos") {
                         if let Some(arch) =
                             map_darwin_target_from_rust_to_compiler_architecture(target)

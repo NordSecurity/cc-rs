@@ -109,6 +109,11 @@ jobs:
     - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos
     - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos --features parallel
     - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos --release
+    - run: cargo test -Z build-std=std --no-run --target aarch64-apple-tvos-sim
+    - run: cargo test -Z build-std=std --no-run --features parallel --target aarch64-apple-tvos-sim
+    - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos-sim
+    - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos-sim --features parallel
+    - run: cargo test -Z build-std=std --no-run --manifest-path cc-test/Cargo.toml --target aarch64-apple-tvos-sim --release
 
   cuda:
     name: Test CUDA support
